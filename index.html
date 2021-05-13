@@ -4,101 +4,326 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>S3_Llestres_N2</title>
+    <title>S3_Llestres_N3</title>
+    <style>
+      html {
+        background-color: rgba(95, 158, 160, 0.6);
+      }
+      main {
+        margin: auto;
+        max-width: 800px;
+      }
+      h1 {
+        text-align: center;
+      }
+      section {
+        background-color: rgba(255, 255, 255);
+        margin: 10px;
+        padding: 15px;
+        border: 2px solid black;
+      }
+
+      p > span {
+        font-weight: bold;
+      }
+
+      #exercici_1_playground {
+        padding: 15px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-around;
+      }
+      .exercici_1 {
+        font-size: large;
+      }
+
+      .boto {
+        text-align: center;
+      }
+
+      .playground {
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+      }
+
+      .quoted {
+        margin: auto;
+        width: 80%;
+        font-size: small;
+      }
+    </style>
   </head>
   <body>
     <script>
-      // Nivell 1
-      //  EXERCICI 1
       const nom = ["J", "O", "E", "L"];
-      for (lletra of nom) {
-        console.log(lletra);
-      }
 
-      //  EXERCICI 2
-      for (lletra of nom) {
-        if (!isNaN(lletra)) {
-          console.log(`Els noms de persona no contenen el número ${lletra}`);
-        } else {
-          if (
-            lletra.toLowerCase() == "a" ||
-            lletra.toLowerCase() == "e" ||
-            lletra.toLowerCase() == "i" ||
-            lletra.toLowerCase() == "o" ||
-            lletra.toLowerCase() == "u"
-          ) {
-            console.log(`He trobat la VOCAL: ${lletra}`);
-          } else {
-            console.log(`He trobat la CONSONANT: ${lletra}`);
+      // EXERCICI 1
+
+      let exercici1_toggle = false;
+
+      function exercici1() {
+        let playground = document.querySelector("#exercici_1_playground");
+        if (!exercici1_toggle) {
+          for (lletra of nom) {
+            playground.innerHTML += `<div class="exercici_1">${nom.indexOf(
+              lletra
+            )}: '${lletra}'</div>`;
           }
-        }
-      }
-
-      //  EXERCICI 3
-      const objecteNom = {};
-
-      for (const lletra of nom) {
-        if (lletra in objecteNom) {
-          objecteNom[lletra] += 1;
+          exercici1_toggle = true;
         } else {
-          objecteNom[lletra] = 1;
+          playground.innerHTML = "";
+          exercici1_toggle = false;
         }
       }
 
-      console.log(objecteNom);
+      // EXERCICI 2
 
-      // No he aconseguit fer-ho amb el "map", m'agradaria que m'expliquessis com fer-ho si et sembla
+      let exercici2_toggle = false;
 
-      //  const mapaNom = new Map();
-      //  for (const lletra of nom) {
-      //     if (mapaNom.has(lletra)) {
-      //     mapaNom.set(lletra, 2);
-      //     console.log("it has it");
-      //   } else {
-      //     mapaNom.set(lletra, 1);
-      //   }
-      //  }
+      function exercici2() {
+        let playground = document.querySelector("#exercici_2_playground");
 
-      //  EXERCICI 4
-
-      const surname = [
-        "S",
-        "A",
-        "N",
-        "T",
-        "A",
-        "E",
-        "U",
-        "L",
-        "A",
-        "R",
-        "I",
-        "A",
-      ];
-
-      const fullName = nom.concat(" ", surname);
-      console.log(fullName);
-
-      // Nivell 2
-      var resultat = calculadora("multiplicacio", 40, 20);
-      var str =
-        "Una dirección de correo electrónico es la dirección que utiliza para recibir y enviar correos electrónicos. Se muestra a los destinatarios de sus correos electrónicos para que sepan quién le envió un correo electrónico. Cada dirección de correo electrónico sólo se puede asignar una vez en todo el mundo y, por lo tanto, está disponible exclusivamente para usted. No puede cambiar las direcciones de correo electrónico, pero puede eliminarlas en cualquier momento. Una dirección de correo electrónico consiste en el signo @ (arroba), el nombre de usuario delante y el dominio detrás, por ejemplo, nombre-de-usuario@ionos.es: La parte del dominio depende del dominio bajo el cual se crea la dirección de correo electrónico: en nuestro ejemplo es ionos.es. Esta información varía de proveedor a proveedor, por lo que una parte del dominio también puede ser gmail.com o gmx.es si utiliza una dirección de correo electrónico de estos proveedores. Si ha registrado su propio dominio, por ejemplo, www.el-nombre-de-sus-sueños.es, las direcciones de correo electrónico que configura para el dominio lo tienen como parte del dominio (nombre-de-usuario@el-nombre-de-sus-sueños.es o nombre-de-usuario@el-nombre-de-sus-sueños.ES). El nombre de usuario es la parte de una dirección de correo electrónico que puede seleccionar libremente en la medida de lo posible. Puede, por ejemplo, utilizar su propio nombre o el nombre o departamento de una empresa. Si utiliza una dirección de correo electrónico con un proveedor de correo como gmail.com o gmx.es, es posible que la combinación con la parte del dominio deseada ya esté registrada. En este caso, deberá considerar alternativas para el nombre de usuario de su dirección de correo electrónico. Si utiliza su propio dominio, estas restricciones no se aplican porque sólo usted puede crear direcciones de correo electrónico que coincidan con su propio dominio. En resumen, nombre-de-usuario@ionos.es es un email";
-      function getMails(string) {
-        let array = string.match(
-          /([a-zA-ZÑñ0-9._-]+@[a-zA-ZÑñ0-9._-]+\.[a-zA-Z0-9_-]+)/gi
-        );
-        let arrayLowerCase = [];
-        for (let i = 0; i < array.length; i++) {
-          arrayLowerCase.push(array[i].toLowerCase());
+        if (!exercici2_toggle) {
+          for (lletra of nom) {
+            if (!isNaN(lletra)) {
+              playground.innerHTML =
+                +`<div>Els noms de persona no contenen el número ${lletra}</div>`;
+            } else {
+              if (
+                lletra.toLowerCase() == "a" ||
+                lletra.toLowerCase() == "e" ||
+                lletra.toLowerCase() == "i" ||
+                lletra.toLowerCase() == "o" ||
+                lletra.toLowerCase() == "u"
+              ) {
+                playground.innerHTML += `<p>He trobat la VOCAL: ${lletra}</p>`;
+              } else {
+                playground.innerHTML += `<p>He trobat la CONSONANT: ${lletra}</p>`;
+              }
+            }
+          }
+          exercici2_toggle = true;
+        } else {
+          playground.innerHTML = "";
+          exercici2_toggle = false;
         }
-        let unicMails = [...new Set(arrayLowerCase)];
-        return unicMails;
       }
 
-      // Nivell 3
+      // EXERCICI 3
 
-      let mails = getMails(str);
-      console.log(mails);
+      let exercici3_toggle = false;
+
+      function exercici3() {
+        let playground = document.querySelector("#exercici_3_playground");
+
+        if (!exercici3_toggle) {
+          const objecteNom = {};
+
+          for (const lletra of nom) {
+            if (lletra in objecteNom) {
+              objecteNom[lletra] += 1;
+            } else {
+              objecteNom[lletra] = 1;
+            }
+          }
+          for (const key in objecteNom) {
+            playground.innerHTML += `<p>${key}: ${objecteNom[key]}</p>`;
+          }
+          exercici3_toggle = true;
+        } else {
+          playground.innerHTML = "";
+          exercici3_toggle = false;
+        }
+      }
+
+      // EXERCICI 4
+
+      let exercici4_toggle = false;
+
+      function exercici4() {
+        let playground = document.querySelector("#exercici_4_playground");
+
+        const surname = [
+          "S",
+          "A",
+          "N",
+          "T",
+          "A",
+          "E",
+          "U",
+          "L",
+          "A",
+          "R",
+          "I",
+          "A",
+        ];
+        const fullName = nom.concat(" ", surname);
+
+        if (!exercici4_toggle) {
+          for (let i = 0; i < fullName.length; i++) {
+            playground.innerHTML += `<p>${i}: '${fullName[i]}'</p>`;
+            exercici4_toggle = true;
+          }
+        } else {
+          playground.innerHTML = "";
+          exercici4_toggle = false;
+        }
+      }
+
+      // EXERCICI 5
+
+      let exercici5_toggle = false;
+
+      function exercici5() {
+        let playground = document.querySelector("#exercici_5_playground");
+
+        var str =
+          "Una dirección de correo electrónico es la dirección que utiliza para recibir y enviar correos electrónicos. Se muestra a los destinatarios de sus correos electrónicos para que sepan quién le envió un correo electrónico. Cada dirección de correo electrónico sólo se puede asignar una vez en todo el mundo y, por lo tanto, está disponible exclusivamente para usted. No puede cambiar las direcciones de correo electrónico, pero puede eliminarlas en cualquier momento. Una dirección de correo electrónico consiste en el signo @ (arroba), el nombre de usuario delante y el dominio detrás, por ejemplo, nombre-de-usuario@ionos.es: La parte del dominio depende del dominio bajo el cual se crea la dirección de correo electrónico: en nuestro ejemplo es ionos.es. Esta información varía de proveedor a proveedor, por lo que una parte del dominio también puede ser gmail.com o gmx.es si utiliza una dirección de correo electrónico de estos proveedores. Si ha registrado su propio dominio, por ejemplo, www.el-nombre-de-sus-sueños.es, las direcciones de correo electrónico que configura para el dominio lo tienen como parte del dominio (nombre-de-usuario@el-nombre-de-sus-sueños.es o nombre-de-usuario@el-nombre-de-sus-sueños.ES). El nombre de usuario es la parte de una dirección de correo electrónico que puede seleccionar libremente en la medida de lo posible. Puede, por ejemplo, utilizar su propio nombre o el nombre o departamento de una empresa. Si utiliza una dirección de correo electrónico con un proveedor de correo como gmail.com o gmx.es, es posible que la combinación con la parte del dominio deseada ya esté registrada. En este caso, deberá considerar alternativas para el nombre de usuario de su dirección de correo electrónico. Si utiliza su propio dominio, estas restricciones no se aplican porque sólo usted puede crear direcciones de correo electrónico que coincidan con su propio dominio. En resumen, nombre-de-usuario@ionos.es es un email";
+
+        if (!exercici5_toggle) {
+          function getMails(string) {
+            let array = string.match(
+              /([a-zA-ZÑñ0-9._-]+@[a-zA-ZÑñ0-9._-]+\.[a-zA-Z0-9_-]+)/gi
+            );
+            let arrayLowerCase = [];
+            for (let i = 0; i < array.length; i++) {
+              arrayLowerCase.push(array[i].toLowerCase());
+            }
+            let unicMails = [...new Set(arrayLowerCase)];
+            return unicMails;
+          }
+
+          let mails = getMails(str);
+          for (mail of mails) {
+            playground.innerHTML += `<p>${mails.indexOf(mail)}: ${mail}</p>`;
+          }
+          exercici5_toggle = true;
+        } else {
+          playground.innerHTML = "";
+          exercici5_toggle = false;
+        }
+      }
     </script>
+    <main>
+      <h1>Sprint 3: Lletres</h1>
+      <section>
+        <h2>Exercici 1</h2>
+        <p>
+          <span>"nom"</span> és un array en què cada lletra del meu nom ocupa
+          una posició.
+        </p>
+        <p>
+          Iterant per l'array amb un loop <span>for...of</span>, i fent servir
+          <span>string literals</span> pots veure el seu contingut fent click al
+          botó.
+        </p>
+        <div class="boto">
+          <button onclick="exercici1()">Veure "nom"</button>
+        </div>
+        <div id="exercici_1_playground" class="playground"></div>
+      </section>
+      <section>
+        <h2>Exercici 2</h2>
+        <p>
+          Partint del mateix array (<span>"nom"</span>), podem comprovar si les
+          lletres que el formen son vocals o consonants.
+        </p>
+        <div class="boto">
+          <button onclick="exercici2()">Vocals o Consonants</button>
+        </div>
+        <div id="exercici_2_playground" class="playground"></div>
+      </section>
+      <section>
+        <h2>Exercici 3</h2>
+        <p>
+          En aquest exercici hem creat un objecte amb l'array
+          <span>"nom"</span>, l'objecte <span>"objecteNom"</span>.
+        </p>
+        <p>
+          Dins de l'objecte cada lletra de l'array <span>"nom"</span> és la
+          <span>key</span> i el seu <span>value</span> és el número de vegades
+          que ha aparegut en l'array.
+        </p>
+        <div class="boto">
+          <button onclick="exercici3()">Veure objecteNom</button>
+        </div>
+        <div id="exercici_3_playground" class="playground"></div>
+      </section>
+      <section>
+        <h2>Exercici 4</h2>
+        <p>
+          Fent servir la funció <span>concat()</span> hem fusionat l'array
+          <span>"nom"</span>amb el nou array <span>"surname"</span>, per formar
+          l'array <span>"fullName"</span>.
+        </p>
+        <p>
+          Amb un mètode semblant al de l'exercici 1, podem veure el contingut
+          d'aquest array:
+        </p>
+        <div class="boto">
+          <button onclick="exercici4()">Veure fullName</button>
+        </div>
+        <div id="exercici_4_playground" class="playground"></div>
+      </section>
+      <section>
+        <h2>Exercici 5</h2>
+        <p>
+          Per al cinquè exercici ens han donat un string <span>"str"</span> dins
+          del qual haviem de trobar tots els correus electrònics diferents i
+          inclourel's en un array sense repetir-los.
+        </p>
+        <div class="quoted">
+          <p>
+            Una dirección de correo electrónico es la dirección que utiliza para
+            recibir y enviar correos electrónicos. Se muestra a los
+            destinatarios de sus correos electrónicos para que sepan quién le
+            envió un correo electrónico. Cada dirección de correo electrónico
+            sólo se puede asignar una vez en todo el mundo y, por lo tanto, está
+            disponible exclusivamente para usted. No puede cambiar las
+            direcciones de correo electrónico, pero puede eliminarlas en
+            cualquier momento. Una dirección de correo electrónico consiste en
+            el signo @ (arroba), el nombre de usuario delante y el dominio
+            detrás, por ejemplo, nombre-de-usuario@ionos.es: La parte del
+            dominio depende del dominio bajo el cual se crea la dirección de
+            correo electrónico: en nuestro ejemplo es ionos.es. Esta información
+            varía de proveedor a proveedor, por lo que una parte del dominio
+            también puede ser gmail.com o gmx.es si utiliza una dirección de
+            correo electrónico de estos proveedores. Si ha registrado su propio
+            dominio, por ejemplo, www.el-nombre-de-sus-sueños.es, las
+            direcciones de correo electrónico que configura para el dominio lo
+            tienen como parte del dominio
+            (nombre-de-usuario@el-nombre-de-sus-sueños.es o
+            nombre-de-usuario@el-nombre-de-sus-sueños.ES). El nombre de usuario
+            es la parte de una dirección de correo electrónico que puede
+            seleccionar libremente en la medida de lo posible. Puede, por
+            ejemplo, utilizar su propio nombre o el nombre o departamento de una
+            empresa. Si utiliza una dirección de correo electrónico con un
+            proveedor de correo como gmail.com o gmx.es, es posible que la
+            combinación con la parte del dominio deseada ya esté registrada. En
+            este caso, deberá considerar alternativas para el nombre de usuario
+            de su dirección de correo electrónico. Si utiliza su propio dominio,
+            estas restricciones no se aplican porque sólo usted puede crear
+            direcciones de correo electrónico que coincidan con su propio
+            dominio. En resumen, nombre-de-usuario@ionos.es es un email
+          </p>
+        </div>
+        <p>
+          Per tal de trobar-hi els mails he fet servir
+          <span>expressions regulars</span> i el mètode <span>match()</span>.
+          Això m'ha tornat un array amb tots els correus però incloent
+          repeticions.
+        </p>
+        <p>
+          Per lliurar-me de les repeticions he creat un <span>Set</span> amb
+          l'array obtingut però abans he passat tot el seu contingut a
+          minúscula, ja que les direccions de correu electrònic no distingeixen
+          entre minúscules i majúscules.
+        </p>
+        <div class="boto">
+          <button onclick="exercici5()">Mostrar resultats</button>
+        </div>
+        <div id="exercici_5_playground" class="playground"></div>
+      </section>
+    </main>
   </body>
 </html>
